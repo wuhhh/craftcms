@@ -28,7 +28,6 @@
     "vlucas/phpdotenv": "^5.4.0"
   },
   "require-dev": {
-    "nystudio107/craft-autocomplete": "^1.10.0",
     "yiisoft/yii2-shell": "^2.0.3"
   },
   "scripts": {
