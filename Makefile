@@ -1,12 +1,9 @@
-.PHONY: build dev pull up install
+.PHONY: build dev up install
 
 build: up
 	ddev exec npm run build
 dev: build
 	ddev exec npm run serve
-pull: up
-	ddev exec php craft servd-asset-storage/local/pull-database --from=production --interactive=0
-	ddev composer install
 install: up build
 	ddev exec php craft setup/app-id \
 		$(filter-out $@,$(MAKECMDGOALS))
@@ -16,8 +13,7 @@ install: up build
 		$(filter-out $@,$(MAKECMDGOALS))
 	ddev exec php craft plugin/install cp-field-inspect
 	ddev exec php craft plugin/install hyper
-	ddev exec php craft plugin/install imager-x
-	ddev exec php craft plugin/install postmark
+	ddev exec php craft plugin/install neo
 	ddev exec php craft plugin/install redactor
 	ddev exec php craft plugin/install vite
 up:

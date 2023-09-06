@@ -1,16 +1,20 @@
 /* CSS */
 import "@js/parts/css";
 
-/* JS */
-import "@js/parts/lazyloading";
+/* Non-alpine JS */
+// 
 
 /**
  * Alpine JS
  * Best to put it last so that all other potential JS is available
  * when components start getting initialized.
- */
+*/
 import Alpine from 'alpinejs';
-window.Alpine = Alpine;
+import alpineComponent from "@js/parts/alpineComponent";
+
+/* Register components */
+Alpine.data('alpineComponent', alpineComponent); 
+
 Alpine.start();
 
 /**
