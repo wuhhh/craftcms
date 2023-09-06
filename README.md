@@ -1,4 +1,4 @@
-## About onedarnleyroad/craftcms
+## About wuhhh/craftcms
 
 A Craft CMS starter project using DDEV for local hosting and Vite for front-end bundling and HMR.
 
@@ -15,8 +15,6 @@ A Craft CMS starter project using DDEV for local hosting and Vite for front-end 
 - [Vite 4.x](https://vitejs.dev/) for front-end bundling & HMR
 - [Tailwind 3.x](https://tailwindcss.com) for utility-first CSS
 - [Alpine 3.x](https://alpinejs.dev/) for lightweight reactivity
-- [Servd](https://servd.host/) as the default hosting environment
-- [Postmark](https://postmarkapp.com/) for email delivery
 - [Makefile](https://www.gnu.org/software/make/manual/make.html) for common CLI commands
 
 ## Local machine prerequisites:
@@ -35,7 +33,7 @@ you can use `create-project` to pull the latest tagged release.
 Open terminal prompt, and run:
 
 ```shell
-composer create-project onedarnleyroad/craftcms PATH --no-install
+composer create-project wuhhh/craftcms PATH --no-install
 ```
 
 Make sure that `PATH` is a **new** or **existing and empty** folder.
@@ -45,7 +43,7 @@ Make sure that `PATH` is a **new** or **existing and empty** folder.
 Alternatively you can clone the repo via the Git CLI:
 
 ```shell
-git clone git@github.com:onedarnleyroad/craftcms.git PATH
+git clone git@github.com:wuhhh/craftcms.git PATH
 ```
 
 Make sure that `PATH` is a **new** _or_ **existing and empty** folder.
@@ -150,31 +148,15 @@ A Makefile has been included to provide a unified CLI for common development com
 ## Craft CMS Plugins
 
 1. [CP Field Inspect](https://plugins.craftcms.com/cp-field-inspect)
-1. [Craft Autocomplete](https://github.com/nystudio107/craft-autocomplete)
 1. [Hyper](https://plugins.craftcms.com/hyper)
-1. [Imager-X](https://imager-x.spacecat.ninja/)
 1. [Knock Knock](https://plugins.craftcms.com/knock-knock)
-1. [Postmark](https://plugins.craftcms.com/postmark)
 1. [Redactor](https://plugins.craftcms.com/redactor)
 1. [Seomatic](https://nystudio107.com/docs/seomatic/)
-1. [Servd Assets and Helpers](https://github.com/servdhost/craft-asset-storage)
 1. [Vite](https://github.com/nystudio107/craft-vite)
-
-## Tailwind Plugins
-
-1. [Aspect Ratio](https://github.com/tailwindlabs/tailwindcss-aspect-ratio)
-1. [Line Clamp](https://github.com/tailwindlabs/tailwindcss-line-clamp)
-1. [Typography](https://github.com/tailwindlabs/tailwindcss-typography)
 
 ## Javascript Libraries
 
 1. [AlpineJS](https://alpinejs.dev/)
-1. [Lazysizes](https://afarkas.github.io/lazysizes/)
-
-## Roadmap
-
-- Continue to improve docs
-- Bugfixes, new features
 
 ## Acknowledgements & Credits
 
