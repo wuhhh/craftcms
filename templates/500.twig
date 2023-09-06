@@ -1,3 +1,16 @@
-{% extends "_layouts/message.twig" %}
+{% extends "_layouts/default.twig" %}
 
-{% set message = "Internal server error, please try again later."|t %}
+{% block bodyTag %}
+  {{ parent()|attr({
+    class: 'bg-gray-200 h-screen'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="w-full h-full flex items-center justify-center text-center">
+		<div>
+			<h1 class="font-mono text-2xl">500</h1>
+			<div class="font-mono mt-4">Internal server error</div>
+		</div>
+	</div>
+{% endblock %}

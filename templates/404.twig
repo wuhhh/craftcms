@@ -1,4 +1,16 @@
-{% extends "_layouts/message.twig" %}
+{% extends "_layouts/default.twig" %}
 
-{% set title = "Page Not Found"|t %}
-{% set message = "Sorry, we could not find the page you were looking for."|t %}
+{% block bodyTag %}
+  {{ parent()|attr({
+    class: 'bg-gray-200 h-screen'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="w-full h-full flex items-center justify-center text-center">
+		<div>
+			<h1 class="font-mono text-2xl">404</h1>
+			<div class="font-mono mt-4">Page not found | <a class="text-blue-500" href="{{ siteUrl }}">home</a></div>
+		</div>
+	</div>
+{% endblock %}

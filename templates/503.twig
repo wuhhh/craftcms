@@ -1,4 +1,16 @@
-{% extends "_layouts/message.twig" %}
+{% extends "_layouts/default.twig" %}
 
-{% set title = "Site Offline"|t %}
-{% set message = "We are temporarily offline while we perform updates."|t %}
+{% block bodyTag %}
+  {{ parent()|attr({
+    class: 'bg-gray-200 h-screen'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="w-full h-full flex items-center justify-center text-center">
+		<div>
+			<h1 class="font-mono text-2xl">503</h1>
+			<div class="font-mono mt-4">Temporarily offline</div>
+		</div>
+	</div>
+{% endblock %}

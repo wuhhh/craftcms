@@ -2,9 +2,11 @@
 
 {% block response %}
 <!DOCTYPE html>
-<html class="no-js"
-      lang="{{ currentSite.language }}"
-      dir="{{craft.app.i18n.getLocaleById(currentSite.id).getOrientation()}}">
+<html 
+	class="no-js"
+  lang="{{ currentSite.language }}"
+  dir="{{craft.app.i18n.getLocaleById(currentSite.id).getOrientation()}}"
+>
   <head>
     <style>[x-cloak] { display: none !important; }</style>
     <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
@@ -17,9 +19,9 @@
     {% include "_includes/scripts.twig" %}
   </head>
   {% block bodyTag %}
-  <body class="relative flex flex-col min-h-screenh antialiased">
+ 		<body class="relative flex flex-col min-h-screenh antialiased">
   {% endblock %}
-    {% block content %}{% endblock %}
+	{% block content %}{% endblock %}
   </body>
 </html>
 {% endblock %}
