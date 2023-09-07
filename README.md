@@ -143,7 +143,6 @@ A Makefile has been included to provide a unified CLI for common development com
 - `make up` - Starts the DDEV project, ensuring that SSH keys have been added, and npm & Composer have been installed.
 - `make dev` - Runs a one-time build of all front-end assets, then starts Vite's server for HMR.
 - `make build` - Builds all front-end assets.
-- `make pull` - Pull remote db & assets (requires setting up [craft-scripts](https://github.com/nystudio107/craft-scripts/)
 
 ## Craft CMS Plugins
 
