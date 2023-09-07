@@ -1,0 +1,94 @@
+{% set image = image ?? null %}
+{% set classes = classes ?? null %}
+{% set alt = alt ?? "" %}
+{% if alt == "" and image.alt is defined and image.alt is not empty %}
+	{% set alt = image.alt %}
+{% else %}
+	{% if alt is empty %}
+		{% set alt = image.title ?? "" %}
+	{% endif %}
+{% endif %}
+{% set disableAlt = disableAlt ?? false %}
+{% set width = width ?? null %}
+{% set height = height ?? null %}
+{% set sets = sets ?? null %}
+{% set sizes = sizes ?? null %}
+{% set mode = mode ?? 'fit' %}
+{% set importance = importance ?? 'low' %}
+{% set format = format ?? 'jpg' %}
+{% set lazy = lazy ?? true %}
+{% set quality = quality ?? 70 %}
+
+{% if disableAlt %}
+	{% set alt = "" %}
+{% endif %}
+
+{% if image %}
+  <img
+    {{ attrs|default("") }}
+    class="{{ classes }}"
+		importance="{{ importance }}"
+
+    {%~ if lazy %}
+      loading="lazy"
+    {% endif ~%}
+
+    src="{{ image.getUrl({ 
+      width: width, 
+      height: height, 
+      mode: mode, 
+      format: format 
+    }) }}"
+
+    {%~ if sizes %}
+      sizes="{{ sizes }}"
+    {% endif ~%}
+
+    {%~ if sets and sets is iterable %}
+      srcset="
+        {%- for set_ in sets %}
+          {%- if mode == 'crop' and set_ is iterable %}
+            {{- image.getUrl({ 
+              width: set_[0], 
+              height: set_[1],
+              mode: mode, 
+              format: format 
+            }) ~ ' ' ~ set_[0] ~ 'w' -}}{%- if not loop.last %}, {% endif -%}
+          {% else %}
+            {{- image.getUrl({ 
+              width: set_, 
+              mode: mode, 
+              format: format 
+            }) ~ ' ' ~ set_ ~ 'w' -}}{%- if not loop.last %}, {% endif -%}
+          {% endif -%}
+        {% endfor -%}
+      "
+    {% else %}
+      srcset="{{ image.getUrl({ 
+          width: width, 
+          height: height, 
+          mode: mode, 
+          format: format 
+        }) ~ ' 1x' }},
+
+        {{ image.getUrl({ 
+          width: width * 2, 
+          height: height * 2, 
+          mode: mode, 
+          format: format,
+          quality: quality
+        }) ~ ' 2x' }}
+      "
+    {% endif ~%}
+    
+		alt="{{ alt }}"
+
+    {%~ if width %}
+      width="{{ width }}"
+    {% endif ~%}
+
+    {%~ if height %}
+      height="{{ height }}"
+    {% endif ~%}
+  />
+{% endif %}

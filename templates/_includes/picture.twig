@@ -1,0 +1,178 @@
+{# 
+
+Usage:
+
+{% include "_components/picture" with {
+	image: image,
+	attrs: "",
+	classes: "", 
+	alt: "",
+	mode: "crop|fit", 						(default: fit)
+	lazy: true|false,							(default: true)
+	importance: "high|low", 			(default: low)
+	alpha: true|false,						(default: false)
+	disableWebp: true|false, 			(default: false)
+	ratio: [16, 9],								(default: null)
+	pictureSets: [
+		{ "640": [128, 128] },
+		{ "960": [256, 256] },
+		{ "default": [320, 320] }
+	],
+} %}
+
+pictureSets is an array of objects where keys are max-width breakpoints
+Order matters! Smallest breakpoint to biggest, default last
+Requires Huw's image component
+
+If you provide a ratio, you can set width or height to null to keep the 
+aspect ratio specified.
+
+alpha : sets format to png if true, jpg otherwise
+The .webp format is always preferred, to disable set disableWebp: true
+
+#}
+
+{% set image = image ?? null %}
+{% set attrs = attrs ?? "" %}
+{% set classes = classes ?? null %}
+{% set alt = alt ?? "" %}
+{% if alt == "" and image.alt is defined and image.alt is not empty %}
+	{% set alt = image.alt %}
+{% else %}
+	{% if alt is empty %}
+		{% set alt = image.title ?? "" %}
+	{% endif %}
+{% endif %}
+{% set disableAlt = disableAlt ?? false %}
+{% set mode = mode ?? 'fit' %}
+{% set lazy = lazy ?? true %}
+{% set importance = importance ?? "low" %}
+{% set alpha = alpha ?? false %}
+{% set disableWebp = disableWebp ?? false %}
+{% set ratio = ratio ?? null %}
+{% set pictureSets = pictureSets ?? null %}
+
+{% set hasWebpSupport = craft.app.images.supportsWebP %}
+{% set format = alpha ? "png" : "jpg" %}
+
+{% if disableAlt %}
+	{% set alt = "" %}
+{% endif %}
+
+{% if image %}
+
+	{% if image.extension == "svg" %}
+
+		<img src="{{ image.getUrl() }}" class="{{ classes }}" alt="{{ alt }}" /> 
+	
+	{% else %}
+
+		<picture>
+			{%~ if pictureSets and pictureSets is iterable %}
+				{%- for row in pictureSets %}
+					{% for breakpoint, set_ in row %}
+
+						{% set setW = set_[0] %}
+						{% set setH = set_[1] %}
+
+						{# == Allow omission of w or h as long as ratio is set == #}
+						{% if (((setW or setH) and (not setW or not setH)) and ratio is not null) %}
+							{% if setW is null %}
+								{% set setW = (setH * ratio[0] / ratio[1])|round(0) %}
+							{% endif %}
+							{% if setH is null %}
+								{% set setH = (setW * ratio[1] / ratio[0])|round(0) %}
+							{% endif %}
+						{% endif %}
+
+						{% if breakpoint == 'default' %}
+
+							{# == Webp == #}
+							{% if hasWebpSupport %}
+								<source 
+									srcset="{{ image.getUrl({ 
+											width: setW, 
+											height: setH, 
+											mode: mode, 
+											format: 'webp' 
+										}) ~ ' 1x' }},
+
+										{{ image.getUrl({ 
+											width: setW * 2, 
+											height: setH * 2, 
+											mode: mode, 
+											format: 'webp',
+											quality: 92
+										}) ~ ' 2x' }}
+									"
+									type="image/webp"
+								>
+							{% endif %}
+
+							{% include "_components/image" with { 
+								image: image, 
+								width: setW,
+								attrs: attrs,
+								classes: classes,
+								alt: alt,
+								disableAlt: disableAlt,
+								height: setH, 
+								mode: mode, 
+								format: format,
+								importance: importance,
+								lazy: lazy,
+							} %}
+						{% else %}
+
+							{# == Webp == #}
+							{% if hasWebpSupport %}
+								<source 
+									media="(max-width: {{ breakpoint }}px)"
+									srcset="{{ image.getUrl({ 
+											width: setW, 
+											height: setH, 
+											mode: mode, 
+											format: 'webp' 
+										}) ~ ' 1x' }},
+
+										{{ image.getUrl({ 
+											width: setW * 2, 
+											height: setH * 2, 
+											mode: mode, 
+											format: 'webp',
+											quality: 92
+										}) ~ ' 2x' }}
+									"
+									type="image/webp"
+								>
+							{% endif %}
+
+							{# == Fallback == #}
+							<source 
+								media="(max-width: {{ breakpoint }}px)"
+								srcset="{{ image.getUrl({ 
+										width: setW, 
+										height: setH, 
+										mode: mode, 
+										format: format 
+									}) ~ ' 1x' }},
+
+									{{ image.getUrl({ 
+										width: setW * 2, 
+										height: setH * 2, 
+										mode: mode, 
+										format: format,
+										quality: 90
+									}) ~ ' 2x' }}
+								"
+								{% if format == "png" %}type="image/png"{% endif %}
+								{% if format == "jpg" %}type="image/jpeg"{% endif %}
+							>
+						{% endif %} 
+					{% endfor %}
+				{% endfor -%} 
+			{% endif ~%}
+		</picture>
+
+	{% endif %}
+{% endif %}
