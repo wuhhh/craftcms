@@ -150,6 +150,7 @@ A Makefile has been included to provide a unified CLI for common development com
 1. [CP Field Inspect](https://plugins.craftcms.com/cp-field-inspect)
 1. [Hyper](https://plugins.craftcms.com/hyper)
 1. [Knock Knock](https://plugins.craftcms.com/knock-knock)
+1. [Neo](https://plugins.craftcms.com/neo)
 1. [Redactor](https://plugins.craftcms.com/redactor)
 1. [Seomatic](https://nystudio107.com/docs/seomatic/)
 1. [Vite](https://github.com/nystudio107/craft-vite)
