@@ -90,7 +90,7 @@ Follow the prompts.
 
 - **Project name:** e.g. `mysite` would result in a project URL of `https://mysite.ddev.site` (make note of this for later in the installation process)
 - **Docroot location:** defaults to `web`, keep as-is
-- **Project Type:** defaults to `php`, keep as-is
+- **Project Type:** defaults to `craftcms`, keep as-is
 
 ## Installing Craft
 
