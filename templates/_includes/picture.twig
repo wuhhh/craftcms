@@ -2,7 +2,7 @@
 
 Usage:
 
-{% include "_components/picture" with {
+{% include "_includes/picture" with {
 	image: image,
 	attrs: "",
 	classes: "", 
@@ -20,9 +20,9 @@ Usage:
 	],
 } %}
 
-pictureSets is an array of objects where keys are max-width breakpoints
-Order matters! Smallest breakpoint to biggest, default last
-Requires Huw's image component
+pictureSets is an array of objects where keys are min-width breakpoints
+Order matters! Biggest to smallest, default last
+Requires Huw's image component (line 35)
 
 If you provide a ratio, you can set width or height to null to keep the 
 aspect ratio specified.
@@ -63,7 +63,7 @@ The .webp format is always preferred, to disable set disableWebp: true
 
 	{% if image.extension == "svg" %}
 
-		<img src="{{ image.getUrl() }}" class="{{ classes }}" alt="{{ alt }}" /> 
+		<img src="{{ image.getUrl() }}" class="{{ classes }}" alt="{{ alt }}" width="{{ image.width }}" height="{{ image.height }}" /> 
 	
 	{% else %}
 
@@ -109,7 +109,7 @@ The .webp format is always preferred, to disable set disableWebp: true
 								>
 							{% endif %}
 
-							{% include "_components/image" with { 
+							{% include "_includes/image" with { 
 								image: image, 
 								width: setW,
 								attrs: attrs,
@@ -127,7 +127,7 @@ The .webp format is always preferred, to disable set disableWebp: true
 							{# == Webp == #}
 							{% if hasWebpSupport %}
 								<source 
-									media="(max-width: {{ breakpoint }}px)"
+									media="(min-width: {{ breakpoint }}px)"
 									srcset="{{ image.getUrl({ 
 											width: setW, 
 											height: setH, 
@@ -149,7 +149,7 @@ The .webp format is always preferred, to disable set disableWebp: true
 
 							{# == Fallback == #}
 							<source 
-								media="(max-width: {{ breakpoint }}px)"
+								media="(min-width: {{ breakpoint }}px)"
 								srcset="{{ image.getUrl({ 
 										width: setW, 
 										height: setH, 
