@@ -11,8 +11,6 @@ additional_fqdns: []
 database:
     type: mariadb
     version: "10.3"
-nfs_mount_enabled: false
-mutagen_enabled: false
 hooks:
     post-start:
         - exec: composer install
