@@ -17,12 +17,10 @@
     "sort-packages": true
   },
   "require": {
-    "craftcms/cms": "^4.4",
-    "craftcms/redactor": "^3.0",
+    "craftcms/cms": "^5.1.2",
     "mmikkel/cp-field-inspect": "^1.4",
     "nystudio107/craft-seomatic": "^4.0",
     "nystudio107/craft-vite": "^4.0",
-		"spicyweb/craft-neo": "^3.8.5",
     "verbb/hyper": "^1.1",
     "verbb/knock-knock": "^2.0",
     "vlucas/phpdotenv": "^5.4.0"
