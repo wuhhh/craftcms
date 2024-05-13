@@ -17,14 +17,14 @@
     "sort-packages": true
   },
   "require": {
-    "craftcms/ckeditor": "^3.8.3",
+    "craftcms/ckeditor": "^4.0",
     "craftcms/cms": "^5.1.2",
-    "mmikkel/cp-field-inspect": "^1.4",
-    "nystudio107/craft-seomatic": "^4.0",
-    "nystudio107/craft-vite": "^4.0",
-    "verbb/hyper": "^1.1",
-    "verbb/knock-knock": "^2.0",
-    "vlucas/phpdotenv": "^5.4.0"
+    "mmikkel/cp-field-inspect": "^2.0",
+    "nystudio107/craft-seomatic": "^5.0",
+    "nystudio107/craft-vite": "^5.0",
+    "verbb/hyper": "^2.0.0-beta.8",
+    "verbb/knock-knock": "^3.0",
+    "vlucas/phpdotenv": "^5.6.0"
   },
   "require-dev": {
     "yiisoft/yii2-shell": "^2.0.3"
