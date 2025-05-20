@@ -1,7 +1,7 @@
 module.exports = {
   plugins: {
     'postcss-import': {},
-    'tailwindcss': {},
+    '@tailwindcss/postcss': {},
 		'postcss-pxtorem': {
 			rootValue: 16,
 			unitPrecision: 5,
