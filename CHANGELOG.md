@@ -7,9 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### Added
+
+### Changed
+
 ### Fixed:
 
-- Fix 500 and 503 pages
+## [4.0.1]
+
+### Changed:
+
+- NPM Package updates
+
+## [4.0.0]
+
+### Added:
+
+- Now built for Craft 5
+
+### Changed:
+
+- CKEditor replacing Redactor plugin
+- Now uses Vite 5 and Node 20
 
 ### [3.0.1]
 
