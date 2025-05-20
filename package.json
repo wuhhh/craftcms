@@ -13,7 +13,7 @@
     "@tailwindcss/postcss": "^4.0.0-alpha.13",
     "vite": "^5.2.11",
     "vite-plugin-compression": "^0.5.1",
-		"vite-plugin-copy-smartly": "^0.1.0-alpha",
+		"vite-plugin-copy-smartly": "^0.1.4",
     "vite-plugin-manifest-sri": "^0.2.0",
     "vite-plugin-restart": "^0.4.0"
   },
@@ -23,5 +23,6 @@
   "scripts": {
     "build": "NODE_ENV=production vite build",
     "serve": "NODE_ENV=dev vite"
-  }
+  },
+  "type": "module"
 }
