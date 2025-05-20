@@ -1,2 +1,4 @@
 {# vite our app; pass `false` so that CSS is not async loaded #}
-{{ craft.vite.script('src/js/app.js', false) }}
+{{ craft.vite.script('src/js/app.js', false, {
+  defer: true,
+}) }}
