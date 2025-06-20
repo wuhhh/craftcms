@@ -38,7 +38,8 @@
     ],
     "post-craft-update": [
       "@php craft install/check && php craft up --interactive=0 || exit 0",
-      "@php craft install/check && php craft clear-caches/all --interactive=0 || exit 0",
+      "@php craft install/check && php craft clear-caches/compiled-templates --interactive=0 || exit 0",
+      "@php craft install/check && php craft clear-caches/data --interactive=0 || exit 0",
       "@php craft install/check && php craft invalidate-tags/all --interactive=0 || return 0"
     ],
     "post-root-package-install": [
